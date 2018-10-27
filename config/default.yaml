@@ -1,0 +1,16 @@
+homeserverUrl: "https://t2bot.io"
+accessToken: "YOUR_TOKEN_HERE"
+
+# Where sync data and other related information should be stored
+dataPath: "./storage"
+
+# Settings for controlling how logging works
+# The Docker image will only consider the consoleLevel, and not write to any files.
+logging:
+  file: logs/mediabot.log
+  console: true
+  consoleLevel: info
+  fileLevel: verbose
+  rotate:
+    size: 52428800 # bytes, default is 50mb
+    count: 5
