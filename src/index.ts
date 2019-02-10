@@ -1,4 +1,4 @@
-import { AutojoinRoomsMixin, MatrixClient, SimpleRetryJoinStrategy } from "matrix-bot-sdk";
+import { AutojoinRoomsMixin, AutojoinUpgradedRoomsMixin, MatrixClient, SimpleRetryJoinStrategy } from "matrix-bot-sdk";
 import config from "./config";
 import { LocalstorageStorageProvider } from "./LocalstorageStorageProvider";
 import { LogService } from "matrix-js-snippets";
@@ -9,6 +9,7 @@ const storageProvider = new LocalstorageStorageProvider(config.dataPath);
 const client = new MatrixClient(config.homeserverUrl, config.accessToken, storageProvider);
 
 AutojoinRoomsMixin.setupOnClient(client);
+AutojoinUpgradedRoomsMixin.setupOnClient(client);
 client.setJoinStrategy(new SimpleRetryJoinStrategy());
 
 async function finishInit() {
